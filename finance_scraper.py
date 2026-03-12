@@ -2,10 +2,19 @@
 import yfinance as yf
 from datetime import datetime
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Retrieving today's date
 todayDate = datetime.today().strftime("%Y-%m-%d")
-folderPath = "C:/Users/rohan/Coding/financewebscrape/companies-stock_data"
+folderPath = os.getenv("FOLDER_PATH")
+
+# check if loading/correct path (machine specfic)
+if folderPath:
+    print(f"Data will be saved to: {folderPath}")
+else:
+    print("Error: Could not find FOLDER_PATH in environment variables.")
 
 
 # Function defining to saving of stock data

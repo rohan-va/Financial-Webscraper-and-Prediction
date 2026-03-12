@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 import os
 import warnings
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Globally defining
 todayDate = datetime.today().strftime("%Y-%m-%d")
@@ -101,11 +104,11 @@ def existenceOf_reports(file_path, reportsFolder):
 
 
 # Folder Paths - Data and Plots
-dataFolder = "C:/Users/rohan/Coding/financewebscrape/companies-stock_data"
-output_folder = "C:/Users/rohan/Coding/financewebscrape/plots"
-reportsFolder = "C:/Users/rohan/Coding/financewebscrape/reports"
+dataFolder = os.getenv("DATA_FOLDER")
+output_folder = os.getenv("OUTPUT_FOLDER")
+reportsFolder = os.getenv("REPORTS_FOLDER")
 
-# If folder doesn't exist
+# If folder doesn't exist - precaution
 os.makedirs(output_folder, exist_ok=True)
 
 # Runs
